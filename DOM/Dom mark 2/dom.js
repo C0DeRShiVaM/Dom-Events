@@ -35,3 +35,11 @@ header.style.borderBottom = '3px solid black'; //border-bottom is the actual css
 let addItem = document.querySelector('.title');
 addItem.style.fontWeight = 'bold';   //check above why we used camel case instead of font-weight
 addItem.style.color = 'green';
+
+
+//Make the 3rd element in the list have green background color
+let thirdItem = document.querySelector('.list-group');
+thirdItem.children[2].style.backgroundColor = 'green';
+
+// Make all the items in the list bold
+thirdItem.style.fontWeight = 'bold';
