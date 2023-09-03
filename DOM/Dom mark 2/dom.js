@@ -62,9 +62,36 @@
 // }
 
 
-// getElementsByTagName -> It will work in the exctly same way as you saw aove in class
+// getElementsByTagName -> It will work in the exctly same way as you saw above in class
 
-let newlist = document.getElementsByTagName('li');
-console.log(newlist);
-newlist[4].style.color = 'yellow';
-newlist[4].style.backgroundColor = 'orange';
+// let newlist = document.getElementsByTagName('li');
+// console.log(newlist);
+// newlist[4].style.color = 'yellow';
+// newlist[4].style.backgroundColor = 'orange';
+
+
+
+
+//        QUERY SELECTOR
+//Make the 2nd item have green background color
+// let item = document.querySelector('.list-group');
+// console.log(item);
+// item.children[1].style.backgroundColor = 'green';
+
+// Make the 3rd item invisible
+//let thirdItem = document.querySelector('.list-group-item:nth-child(3)');
+// let thirdItem = document.querySelector('.list-group');  // better and more efficient
+// thirdItem.children[2].style.display = 'none';
+
+
+
+//   QUERY SELECTOR ALL
+// Using QuerySelectorALL change the font color to green for 2nd item in the item list
+let seconditem = document.querySelectorAll('.list-group-item');
+seconditem[1].style.color = 'green';
+
+// Choose all the odd elements and make their background green using QuerySelectorALL﻿
+let chooseodd = document.querySelectorAll('.list-group-item:nth-child(odd)');
+for (let i = 0; i < chooseodd.length; i++){
+    chooseodd[i].style.backgroundColor = 'green';
+}
