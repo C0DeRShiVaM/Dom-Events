@@ -87,11 +87,55 @@
 
 //   QUERY SELECTOR ALL
 // Using QuerySelectorALL change the font color to green for 2nd item in the item list
-let seconditem = document.querySelectorAll('.list-group-item');
-seconditem[1].style.color = 'green';
+// let seconditem = document.querySelectorAll('.list-group-item');
+// seconditem[1].style.color = 'green';
 
-// Choose all the odd elements and make their background green using QuerySelectorALL﻿
-let chooseodd = document.querySelectorAll('.list-group-item:nth-child(odd)');
-for (let i = 0; i < chooseodd.length; i++){
-    chooseodd[i].style.backgroundColor = 'green';
-}
+// // Choose all the odd elements and make their background green using QuerySelectorALL﻿
+// let chooseodd = document.querySelectorAll('.list-group-item:nth-child(odd)');
+// for (let i = 0; i < chooseodd.length; i++){
+//     chooseodd[i].style.backgroundColor = 'green';
+// }
+
+                    // IMPORTANT
+//   createElement method
+// create a div
+// let newDiv = document.createElement('div');
+
+// // add class
+// newDiv.className = 'hello';
+
+// // add id
+// newDiv.id = 'namaste';
+
+// //add attribute using setAttribute method
+// newDiv.setAttribute('title', 'hello div');
+
+// // Create text node using createTextNode method
+// let newDivText = document.createTextNode('Hello World');
+
+// // add text to div using appendChild method
+// newDiv.appendChild(newDivText);
+
+// // Inserting things inside the dom
+// let container = document.querySelector('header .container');
+// let h1 = document.querySelector('header h1');
+
+// //console.log(newDiv);
+// // Here, you are using the insertBefore method to insert the newDiv (the div element you created) before the h1 element within the container. This means the newDiv will be placed as a sibling element before the h1 element inside the container
+// container.insertBefore(newDiv, h1);
+
+
+
+// Now go head and add HEllo word before Item 1
+
+let newHtoo = document.createElement('h2');
+newHtoo.className = 'htwo';
+let newHtooText = document.createTextNode('Hello word');
+newHtoo.appendChild(newHtooText);
+//console.log(newHtoo);
+
+let container = document.querySelector('header .title');
+let itemList = document.querySelector('#items');
+let firstListItem = itemList.firstElementChild;
+
+itemList.insertBefore(newHtoo, firstListItem);
