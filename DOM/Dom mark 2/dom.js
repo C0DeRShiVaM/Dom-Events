@@ -19,7 +19,7 @@
 
 
 
-// //   SELECTORS
+//   SELECTORS
 // let headerTitle = document.getElementById('header-title');
 // console.log(headerTitle);
 // headerTitle.textContent = 'Hello'; // It returns: The text content of the element and all descendaces, with spacing and CSS hidden text, but without tags.
@@ -37,13 +37,13 @@
 // addItem.style.color = 'green';
 
 
-// //Make the 3rd element in the list have green background color
+//Make the 3rd element in the list have green background color
 // let thirdItem = document.querySelector('.list-group');
 // thirdItem.children[2].style.backgroundColor = 'green';
+// thirdItem.children[1].style.color = 'orange';
 
 // // Make all the items in the list bold
 // thirdItem.style.fontWeight = 'bold';
-
 
 
 // // // another way
@@ -62,7 +62,7 @@
 // }
 
 
-// getElementsByTagName -> It will work in the exctly same way as you saw above in class
+// getElementsByTagName -> It will work in the exctly same way as you saw aove in class
 
 // let newlist = document.getElementsByTagName('li');
 // console.log(newlist);
@@ -72,29 +72,31 @@
 
 
 
-//        QUERY SELECTOR
-//Make the 2nd item have green background color
-// let item = document.querySelector('.list-group');
-// console.log(item);
-// item.children[1].style.backgroundColor = 'green';
-
-// Make the 3rd item invisible
-//let thirdItem = document.querySelector('.list-group-item:nth-child(3)');
-// let thirdItem = document.querySelector('.list-group');  // better and more efficient
-// thirdItem.children[2].style.display = 'none';
+//             TRAVERSING THE DOM               //
+// parentNode
+// let itemList = document.querySelector('#items');
+// console.log(itemList.parentNode);
+// itemList.parentNode.style.backgroundColor = 'blue';
+// itemList.parentNode.parentNode.parentNode.style.backgroundColor = 'brown';
 
 
+// childNode    // useless don't use it.. we will use children instead of this one
 
-//   QUERY SELECTOR ALL
-// Using QuerySelectorALL change the font color to green for 2nd item in the item list
-// let seconditem = document.querySelectorAll('.list-group-item');
-// seconditem[1].style.color = 'green';
 
-// // Choose all the odd elements and make their background green using QuerySelectorALL﻿
-// let chooseodd = document.querySelectorAll('.list-group-item:nth-child(odd)');
-// for (let i = 0; i < chooseodd.length; i++){
-//     chooseodd[i].style.backgroundColor = 'green';
-// }
+// FirstChild   // Another useless product.. use firstElementChild instead of this one
+
+
+// we can use children[1] instead of firstElementChild and lastElementChild in javascript dom
+
+
+// nextElementSibling
+// let itemList = document.querySelector('#items');
+//console.log(itemList.nextElementSibling);
+// previousElementSibling
+//console.log(itemList.previousElementSibling);
+
+
+
 
                     // IMPORTANT
 //   createElement method
@@ -126,16 +128,28 @@
 
 
 
-// Now go head and add HEllo word before Item 1
+//Now go head and add HEllo word before Item 1
 
-let newHtoo = document.createElement('h2');
-newHtoo.className = 'htwo';
-let newHtooText = document.createTextNode('Hello word');
-newHtoo.appendChild(newHtooText);
-//console.log(newHtoo);
+// let newHtoo = document.createElement('h2');
+// newHtoo.className = 'htwo';
+// let newHtooText = document.createTextNode('Hello word');
+// newHtoo.appendChild(newHtooText);
+// //console.log(newHtoo);
 
-let container = document.querySelector('header .title');
-let itemList = document.querySelector('#items');
-let firstListItem = itemList.firstElementChild;
+// let container = document.querySelector('header .title');
+// let itemList = document.querySelector('#items');
+// let firstListItem = itemList.firstElementChild;
 
-itemList.insertBefore(newHtoo, firstListItem);
+// itemList.insertBefore(newHtoo, firstListItem);
+
+
+
+// Add new li in the item list
+let newList = document.createElement('li');
+newList.classList.add('list-group-item');
+let newListText = document.createTextNode('Item 0');
+newList.appendChild(newListText);
+
+let container = document.querySelector('.list-group');
+let firstItem = document.querySelector('.list-group li:first-child');
+container.insertBefore(newList, firstItem);
