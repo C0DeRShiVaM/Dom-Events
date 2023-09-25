@@ -6,16 +6,16 @@
     <title>Storing in Local Storage</title>
 </head>
 <body>
-    <form onsubmit="saveToLocalStorage(event)">
-        <label for="username">Name</label>
-        <input type="text" name="username" id="username">
+    <form id="myForm">
+        <label for="userName">Name</label>
+        <input type="text" name="userName" id="userName">
         <label for="emailId">EmailId</label>
         <input type="email" name="emailId" id="emailId">
         <label for="phoneNumber">PhoneNumber</label>
         <input type="tel" name="phoneNumber" id="phoneNumber">
-        <button>Submit</button>
+        <button id="submitButton">Submit</button>
     </form>
-
+    <ul id="itemList"></ul>
     <script src="obj.js"></script>
 </body>
 </html>
