@@ -65,6 +65,12 @@ function showUserOnScreen(newUser) {
     dBtn.appendChild(document.createTextNode('Delete'));
     li.appendChild(dBtn);
 
+    // Add edit button
+    const eBtn = document.createElement('button');
+    eBtn.className = 'btn btn-primary';
+    eBtn.appendChild(document.createTextNode('Edit'));
+    li.appendChild(eBtn);
+
     ul.appendChild(li);
 
     dBtn.addEventListener('click', removeItem);
@@ -81,6 +87,24 @@ function showUserOnScreen(newUser) {
 
             // Store the updated user array back in local storage
             localStorage.setItem('userDetails', JSON.stringify(userArray));
+        }
+    }
+
+    // Editing functionality
+    eBtn.addEventListener('click', editItem);
+
+    function editItem(){
+        if (confirm('Why tell me why?')){
+            ul.removeChild(li);
+            let userArray = JSON.parse(localStorage.getItem('userDetails')) || [];
+            userArray = userArray.filter(user => user.email !== newUser.email);
+
+            localStorage.setItem('userDetails', JSON.stringify(userArray));
+
+            // Populate the form fields with the user's information
+            document.querySelector('#userName').value = newUser.name;
+            document.querySelector('#emailId').value = newUser.email;
+            document.querySelector('#phoneNumber').value = newUser.phoneNo;
         }
     }
 }
