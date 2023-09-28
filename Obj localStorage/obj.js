@@ -21,13 +21,12 @@
 
 
 
-// STORING MULTIPLE DATA IN LOCAL STORAGE
-
+// Storing multiple data in local storage and showing them in the form
 let form = document.querySelector('#myForm');
 
 form.addEventListener('submit', addUserDetails);
 
-function addUserDetails(e){
+function addUserDetails(e) {
     e.preventDefault();
 
     const name = document.querySelector('#userName').value;
@@ -50,14 +49,38 @@ function addUserDetails(e){
     localStorage.setItem('userDetails', JSON.stringify(userArray));
     console.log('Data stored in local storage');
 
-    // clear form after submitting
+    // Clear form after submitting
     form.reset();
     showUserOnScreen(newUser);
 }
 
-function showUserOnScreen(newUser){
+function showUserOnScreen(newUser) {
     const ul = document.querySelector('#itemList');
     const li = document.createElement('li');
     li.textContent = newUser.name + ' - ' + newUser.email + ' - ' + newUser.phoneNo;
+
+    // Add delete button
+    const dBtn = document.createElement('button');
+    dBtn.className = 'btn btn-danger';
+    dBtn.appendChild(document.createTextNode('Delete'));
+    li.appendChild(dBtn);
+
     ul.appendChild(li);
+
+    dBtn.addEventListener('click', removeItem);
+
+    function removeItem() {
+        if (confirm('Are you sure you want to delete this user?')) {
+            ul.removeChild(li);
+
+            // Get the existing user data from local storage
+            let userArray = JSON.parse(localStorage.getItem('userDetails')) || [];
+
+            // Find and remove the user object by email
+            userArray = userArray.filter(user => user.email !== newUser.email);
+
+            // Store the updated user array back in local storage
+            localStorage.setItem('userDetails', JSON.stringify(userArray));
+        }
+    }
 }
